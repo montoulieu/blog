@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
         <Link href={'/'}>
           <a>home</a>
         </Link>
-        <Link href={'/blog'}>
+        <Link href={'/posts'}>
           <a>blog</a>
         </Link>
         <Link href={'/about'}>
