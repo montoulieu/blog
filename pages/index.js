@@ -1,58 +1,46 @@
-import React, { Component } from 'react';
+import React from 'react'
+import useBlogStore from '../hooks/useBlogStore';
+import Link from "next/link";
+import format from 'date-fns/format';
 
-import Link from 'next/link';
-import content from '../content/home.md';
+function Index() {
+  const posts = useBlogStore(state => state.posts);
 
-const importBlogPosts = async () => {
-  // https://medium.com/@shawnstern/importing-multiple-markdown-files-into-a-react-component-with-webpack-7548559fce6f
-  // second flag in require.context function is if subdirectories should be searched
-  const markdownFiles = require
-    .context('../content/blogPosts', false, /\.md$/)
-    .keys()
-    .map(relativePath => relativePath.substring(2));
-  return Promise.all(
-    markdownFiles.map(async path => {
-      const markdown = await import(`../content/blogPosts/${path}`);
-      return { ...markdown, slug: path.substring(0, path.length - 3) };
-    })
-  );
-};
+  return (
+    <div>
+      {posts &&
+        <ul className="w-1/2 mx-auto">
+          {posts?.posts?.map(post => (
+            <li className="mb-20 flex flex-col" key={post.title.rendered}>
+              <header className="flex items-center">
+                <Link
+                  href={`/post/[postname]`}
+                  as={`/post/${post.slug}`}
+                >
+                  <a className="text-2xl font-black text-green-500 tracking-wider hover:underline">
+                    {post.title.rendered}
+                  </a>
+                </Link>
+                <span className="date ml-auto italic text-sm text-gray-500">
+                  {format(new Date(post.date), 'MMMM dd, yyyy')}
+                </span>
+              </header>
+              <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }}/>
+              <Link
+                href={`/post/[postname]`}
+                as={`/post/${post.slug}`}
 
-export default class Home extends Component {
-  static async getInitialProps() {
-    const postsList = await importBlogPosts();
-
-    return { postsList };
-  }
-  render() {
-    const { postsList } = this.props;
-    return (
-      <div className="container blog-list">
-        {postsList.map(post => {
-          return (
-            <article>
-              <Link href={`posts/${post.slug}`}>
-                <a>
-                  <img src={post.attributes.thumbnail} />
-                  <h2>{post.attributes.title}</h2>
+              >
+                <a className="ml-auto font-black bg-green-500 hover:bg-green-600 py-1 px-3 rounded-lg">
+                  Read More
                 </a>
               </Link>
-
-            </article>
-          );
-        })}
-        <style jsx>{`
-          .blog-list a {
-            display: block;
-            text-align: center;
-          }
-          .blog-list img {
-            max-width: 100%;
-
-            max-height: 300px;
-          }
-        `}</style>
-      </div>
-    );
-  }
+            </li>
+          ))}
+        </ul>
+      }
+    </div>
+  )
 }
+
+export default Index

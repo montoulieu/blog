@@ -3,7 +3,6 @@ module.exports = {
   theme: {
     fontFamily: {
       'body': ['Noto Sans JP', 'Arial', 'sans-serif'],
-      'display': ['Karnivore', 'Courier', 'mono'],
     },
     container: {
       center: true,
