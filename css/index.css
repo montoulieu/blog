@@ -1,22 +1,48 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;500;700;900&display=swap');
 
 @tailwind base;
 
 body {
-  @apply font-body bg-gray-900 text-green-100;
+  @apply font-body bg-gray-900 text-green-100 font-light;
 }
 
 @tailwind components;
 @tailwind utilities;
 
 a {
-  @apply text-green-400
+  @apply text-green-400;
 }
 
 
 .blog-post {
-  p,
-  pre {
-    @apply mb-6
+
+  .blog-content {
+    p,
+    pre {
+      @apply mb-4;
+    }
+    ul {
+      @apply list-disc list-inside mb-4 text-green-200;
+    }
+    h1,h2,h3 {
+      @apply font-bold text-green-400;
+    }
+    h1,h2 {
+      @apply pt-6 pb-4;
+    }
+
+    h1 {
+      @apply text-3xl;
+    }
+
+    h2 {
+      @apply text-2xl;
+    }
+    h3 {
+      @apply text-lg text-green-300 pb-2;
+    }
+    figcaption {
+      @apply text-sm text-center
+    }
   }
 }

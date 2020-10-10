@@ -13,7 +13,7 @@ function HeaderLogo() {
           </g>
         </g>
       </svg>
-      <span className="text-xl ml-4 text-green-500">Montoulieu Blog</span>
+      <span className="text-xl font-medium ml-4 text-green-500">Montoulieu Blog</span>
     </>
   )
 }

@@ -15,6 +15,7 @@ function MyApp({ Component, pageProps, router }) {
           key={router.route}
           initial="pageInitial"
           animate="pageAnimate"
+          className="md:w-4/5 lg:w-3/5 xl:w-1/2 mx-auto"
           variants={{
             pageInitial: {
               opacity: 0,
@@ -24,7 +25,7 @@ function MyApp({ Component, pageProps, router }) {
             },
           }}
         >
-        <header className="py-5 flex items-center">
+        <header className="py-5 flex items-center mb-10">
           <Link
             href={`/`}
           >

@@ -17,7 +17,7 @@ function Index() {
         />
       </Head>
       {posts &&
-        <ul className="lg:w-2/3 mx-auto">
+        <ul className="">
           {posts?.posts?.map(post => (
             <li className="mb-20 flex flex-col" key={post.title.rendered}>
               <header className="mb-2">
@@ -25,11 +25,10 @@ function Index() {
                   href={`/post/[postname]`}
                   as={`/post/${post.slug}`}
                 >
-                  <a className="block text-3xl font-black text-green-500 leading-tight tracking-wider hover:underline mb-2">
-                    {post.title.rendered}
-                  </a>
+                  <a className="block text-3xl font-black text-green-500 leading-tight tracking-wider hover:underline mb-2"
+                  dangerouslySetInnerHTML={{ __html: post.title.rendered }}/>
                 </Link>
-                <span className="text-lg date ml-auto text-sm text-green-200 font-bold">
+                <span className="text-xl date ml-auto text-green-200 font-bold">
                   {format(new Date(post.date), 'MMMM dd, yyyy')}
                 </span>
               </header>
