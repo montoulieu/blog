@@ -1,9 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100;300;700;900&display=swap');
 
 @tailwind base;
 
 body {
-  @apply font-body bg-gray-900 text-white;
+  @apply font-body bg-gray-900 text-green-100;
 }
 
 @tailwind components;
@@ -15,7 +15,8 @@ a {
 
 
 .blog-post {
-  p {
-    @apply mb-4
+  p,
+  pre {
+    @apply mb-6
   }
 }

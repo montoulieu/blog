@@ -4,6 +4,7 @@ import "@wordpress/block-library/build-style/style.css"
 import { motion } from 'framer-motion';
 import useGetWPPosts from '../hooks/useGetWPPosts';
 import Link from "next/link";
+import HeaderLogo from '../components/HeaderLogo';
 
 
 function MyApp({ Component, pageProps, router }) {
@@ -23,9 +24,15 @@ function MyApp({ Component, pageProps, router }) {
             },
           }}
         >
-          <header className="py-5 flex">
-          {/* <span className="text-2xl font-black">Montoulieu Blog</span> */}
-            <ul className="ml-auto">
+        <header className="py-5 flex items-center">
+          <Link
+            href={`/`}
+          >
+            <a className="flex items-center">
+              <HeaderLogo />
+            </a>
+          </Link>
+            {/* <ul className="ml-auto">
               <Link
                 href={`/`}
               >
@@ -33,7 +40,7 @@ function MyApp({ Component, pageProps, router }) {
                   Home
                 </a>
               </Link>
-            </ul>
+            </ul> */}
           </header>
           <Component {...pageProps} />
         </motion.div>
