@@ -2,25 +2,36 @@ import Debugger from "../../components/Debugger";
 import axios from 'axios';
 import format from 'date-fns/format';
 import Link from "next/link";
+import Head from "next/head";
 
 
-export default function BlogPost({ title, slug, content, featuredImage, post }) {
+export default function BlogPost({ post }) {
   if (!post) return <></>
 
   return (
     <>
-        <div className="w-1/2 mx-auto">
-          <article className="mb-20">
-            <div className="text-white mx-auto mb-10">
-              <header className="mb-5">
-                <h1 className="text-5xl font-bold">{post.title.rendered}</h1>
-                <h2 className="text-xl font-bold">{format(new Date(post.date), 'MMMM dd, yyyy')}</h2>
-              </header>
-              <div dangerouslySetInnerHTML={{ __html: post.content.rendered }}></div>
-              <Debugger data={post} />
-            </div>
-          </article>
-{/*
+      <div className="blog-post lg:w-1/2 mx-auto">
+        <Head>
+          <title>{post.title.rendered} | Montoulieu Blog</title>
+          <meta
+            name="description"
+            content="Montoulieu Blog"
+          />
+        </Head>
+        <article className="mb-20">
+          <div className="text-white mx-auto mb-10">
+            <header className="mb-5">
+              <h1 className="text-5xl text-green-500 font-bold">{post.title.rendered}</h1>
+              <h2 className="text-xl font-bold">{format(new Date(post.date), 'MMMM dd, yyyy')}</h2>
+            </header>
+            <div
+              className="blog-content"
+              dangerouslySetInnerHTML={{ __html: post.content.rendered }}
+            />
+            {/* <Debugger data={post} /> */}
+          </div>
+        </article>
+          {/*
           <ShareArticle
             title={title}
           /> */}

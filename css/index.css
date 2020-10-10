@@ -8,3 +8,14 @@ body {
 
 @tailwind components;
 @tailwind utilities;
+
+a {
+  @apply text-green-400
+}
+
+
+.blog-post {
+  p {
+    @apply mb-4
+  }
+}

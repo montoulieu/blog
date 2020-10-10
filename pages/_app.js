@@ -9,7 +9,7 @@ import Link from "next/link";
 function MyApp({ Component, pageProps, router }) {
   useGetWPPosts();
   return (
-    <main className="container">
+    <main className="container px-3 sm:px-0">
         <motion.div
           key={router.route}
           initial="pageInitial"
