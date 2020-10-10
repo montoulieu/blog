@@ -25,10 +25,10 @@ function Index() {
                   href={`/post/[postname]`}
                   as={`/post/${post.slug}`}
                 >
-                  <a className="block text-3xl font-black text-green-500 leading-tight tracking-wider hover:underline mb-2"
+                  <a className="block text-3xl font-black text-green-500 leading-tight tracking-wider hover:text-green-600 transition-colors duration-200 mb-2"
                   dangerouslySetInnerHTML={{ __html: post.title.rendered }}/>
                 </Link>
-                <span className="text-xl date ml-auto text-green-200 font-bold">
+                <span className="text-xl date ml-auto text-green-300 font-bold">
                   {format(new Date(post.date), 'MMMM dd, yyyy')}
                 </span>
               </header>
@@ -38,7 +38,7 @@ function Index() {
                 as={`/post/${post.slug}`}
 
               >
-                <a className="ml-auto font-black bg-green-500 hover:bg-green-600 text-white transition-colors duration-200 py-1 px-3 rounded-lg">
+                <a className="ml-auto font-black bg-green-500 hover:bg-green-600 text-gray-900 transition-colors duration-200 leading-6 px-3 rounded-lg text-sm">
                   Read More
                 </a>
               </Link>

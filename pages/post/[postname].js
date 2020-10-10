@@ -42,9 +42,9 @@ export default function BlogPost({ post }) {
         </Head>
         <article className="mb-20">
           <div className="text-white mx-auto mb-10">
-            <header className="mb-5">
+            <header className="mb-2">
               <h1 className="text-3xl text-green-500 font-black leading-tight tracking-wider mb-2" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
-              <h2 className="text-xl text-green-200 font-bold">{format(new Date(post.date), 'MMMM dd, yyyy')}</h2>
+              <h2 className="text-xl text-green-300 font-bold">{format(new Date(post.date), 'MMMM dd, yyyy')}</h2>
             </header>
             <div
               className="blog-content tracking-wider leading-7"
