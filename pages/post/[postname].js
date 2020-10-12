@@ -66,7 +66,7 @@ export default function BlogPost({ post }) {
 export async function getStaticProps({ ...ctx }) {
   const { postname } = ctx.params
 
-  const post = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp/v2/posts?slug=${postname}`)
+  const post = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp/v2/posts?slug=${postname}&_fields=date,excerpt,title,slug,content`)
     .then((result) => { return result.data[0] })
 
   return {
@@ -79,7 +79,7 @@ export async function getStaticProps({ ...ctx }) {
 }
 
 export async function getStaticPaths() {
-  const allPosts = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp/v2/posts`)
+  const allPosts = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp/v2/posts?per_page=100&_fields=date,excerpt,title,slug,content`)
     .then((result) => { return result.data })
 
   const paths = allPosts.map((post) => `/post/${post.slug}`) || [];
