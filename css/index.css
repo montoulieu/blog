@@ -13,8 +13,27 @@ a {
   @apply text-green-400;
 }
 
+.button-link {
+  @apply border border-green-400 p-3 rounded inline-block transition-colors duration-200 font-bold
+}
+.button-link:hover {
+  @apply bg-green-400
+}
+.button-link:hover a {
+  @apply text-gray-900
+}
 
 .blog-post {
+  @media screen and (max-width: 639px) {
+    .wp-block-image {
+      figure {
+        margin: 0;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
 
   .blog-content {
     p,
@@ -22,7 +41,7 @@ a {
       @apply mb-4;
     }
     ul {
-      @apply list-disc list-inside mb-4 text-green-200;
+      @apply list-disc list-inside text-green-200;
     }
     h1,h2,h3 {
       @apply font-bold text-green-400;
@@ -42,7 +61,7 @@ a {
       @apply text-lg text-green-300 pb-2;
     }
     figcaption {
-      @apply text-sm text-center
+      @apply text-sm text-center mb-8
     }
   }
 }
