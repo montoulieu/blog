@@ -2,14 +2,12 @@ import '../css/index.css'
 import "@wordpress/block-library/build-style/style.css"
 
 import { motion } from 'framer-motion';
-import useGetWPPosts from '../hooks/useGetWPPosts';
 import Link from "next/link";
 import Head from "next/head";
 import HeaderLogo from '../components/HeaderLogo';
 
 
 function MyApp({ Component, pageProps, router }) {
-  useGetWPPosts();
   return (
     <main className="container px-3 sm:px-0">
       <Head>
@@ -33,7 +31,7 @@ function MyApp({ Component, pageProps, router }) {
           },
         }}
       >
-      <header className="py-5 flex items-center mb-10">
+      <header className="py-5 flex items-center mb-3">
         <Link
           href={`/`}
         >

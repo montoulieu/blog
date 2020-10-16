@@ -8,16 +8,9 @@ import PostCode from '../../components/post/PostCode';
 
 export default function BlogPost({ post }) {
   const replaceCode = node => {
-    if (node.name === 'pre') {
-      return node.children.length > 0 && <PostCode language={getLanguage(node)}>{domToReact(getCode(node))}</PostCode>;
-    }
-  };
-
-  const getLanguage = node => {
-    if (node.attribs.class != null) {
-      return node.attribs.class;
-    }
-    return null;
+    return node.name === 'pre' && node.children.length && (
+      <PostCode>{domToReact(getCode(node))}</PostCode>
+    );
   };
 
   const getCode = node => {
@@ -40,10 +33,11 @@ export default function BlogPost({ post }) {
             content="Montoulieu Blog"
           />
         </Head>
+
         <article className="mb-20">
           <div className="text-white mx-auto mb-10">
-            <header className="mb-2">
-              <h1 className="text-3xl text-green-500 font-black leading-tight tracking-wider mb-2" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
+            <header className="pb-4">
+              <h1 className="text-3xl text-green-500 font-black leading-tight tracking-wider break-words mb-2" dangerouslySetInnerHTML={{ __html: post.title.rendered }} />
               <h2 className="text-xl text-green-300 font-bold">{format(new Date(post.date), 'MMMM dd, yyyy')}</h2>
             </header>
             <div

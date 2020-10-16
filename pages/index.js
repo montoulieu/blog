@@ -1,11 +1,11 @@
 import React from 'react'
-import useBlogStore from '../hooks/useBlogStore';
 import Link from "next/link";
 import Head from "next/head";
 import format from 'date-fns/format';
+import axios from 'axios';
 
-function Index() {
-  const posts = useBlogStore(state => state.posts);
+function Index(props) {
+  const { posts } = props;
 
   return (
     <div className="blog-archive">
@@ -18,7 +18,7 @@ function Index() {
       </Head>
       {posts &&
         <ul className="">
-          {posts?.posts?.map(post => (
+          {posts.map(post => (
             <li className="mb-20 flex flex-col" key={post.title.rendered}>
               <header className="mb-2">
                 <Link
@@ -57,3 +57,13 @@ function Index() {
 }
 
 export default Index
+
+export async function getStaticProps({ ...ctx }) {
+  const posts = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp/v2/posts?per_page=100&_fields=date,excerpt,title,slug,content`);
+
+  return {
+    props: {
+      posts: posts.data,
+    },
+  }
+}
