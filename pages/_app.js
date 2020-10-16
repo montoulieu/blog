@@ -2,10 +2,14 @@ import '../css/index.css'
 import "@wordpress/block-library/build-style/style.css"
 
 import { motion } from 'framer-motion';
-import Link from "next/link";
-import Head from "next/head";
+import Link from 'next/link';
+import Head from 'next/head';
+import Router from 'next/router';
 import HeaderLogo from '../components/HeaderLogo';
 
+if (process.env.NODE_ENV === 'production') {
+  Router.events.on('routeChangeComplete', (url) => gtag.pageview(url));
+}
 
 function MyApp({ Component, pageProps, router }) {
   return (
