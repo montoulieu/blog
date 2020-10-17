@@ -5,12 +5,12 @@ module.exports = {
       './components/**/*.{js,jsx,ts,tsx}',
     ],
     options: {
-      whitelist: ['button-link']
+      whitelist: ['button-link'],
     },
   },
   theme: {
     fontFamily: {
-      'body': ['Noto Sans JP', 'Arial', 'sans-serif'],
+      body: ['Noto Sans JP', 'Arial', 'sans-serif'],
     },
     container: {
       center: true,

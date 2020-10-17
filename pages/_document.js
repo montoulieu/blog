@@ -2,7 +2,7 @@ import Document, {
   Html, Head, Main, NextScript,
 } from 'next/document';
 
-import { GA_TRACKING_ID } from '../util/gtag'
+import { GA_TRACKING_ID } from '../util/gtag';
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -10,7 +10,7 @@ class MyDocument extends Document {
     const isProduction = process.env.NODE_ENV === 'production';
     return {
       ...initialProps,
-      isProduction
+      isProduction,
     };
   }
 
@@ -27,6 +27,7 @@ class MyDocument extends Document {
                 src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
               />
               <script
+                // eslint-disable-next-line react/no-danger
                 dangerouslySetInnerHTML={{
                   __html: `
                     window.dataLayer = window.dataLayer || [];

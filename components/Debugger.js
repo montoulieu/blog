@@ -1,11 +1,9 @@
-import React from "react";
+import React from 'react';
 
-const Debugger = ({ data }) => {
-	return (
-		<pre className="w-full whitespace-pre-wrap">
-			<code>{JSON.stringify(data, null, 4)}</code>
-		</pre>
-	);
-};
+const Debugger = ({ data }) => (
+  <pre className="w-full whitespace-pre-wrap">
+    <code>{JSON.stringify(data, null, 4)}</code>
+  </pre>
+);
 
 export default Debugger;
