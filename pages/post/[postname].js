@@ -29,11 +29,11 @@ export default function BlogPost({
       <NextSeo
         title={seo?.title ? seo.title : title}
         description={seo?.description ? seo.description : ''}
-        canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/journal/post/${post.slug}`}
+        canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/post/${post.slug}`}
         openGraph={{
           title: seo?.title ? seo.title : title,
           description: seo?.description ? seo.description : '',
-          url: `${process.env.NEXT_PUBLIC_SITE_URL}/journal/post/${post.slug}`,
+          url: `${process.env.NEXT_PUBLIC_SITE_URL}/post/${post.slug}`,
           type: 'article',
           article: {
             publishedTime: post.date,
