@@ -10,10 +10,10 @@ function Index(props) {
   return (
     <div className="blog-archive">
       <Head>
-        <title>Montoulieu Blog</title>
+        <title>Montoulieu Dev Blog</title>
         <meta
           name="description"
-          content="Montoulieu Blog"
+          content="Montoulieu Dev Blog"
         />
       </Head>
       {posts

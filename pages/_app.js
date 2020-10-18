@@ -1,10 +1,12 @@
 import '../css/index.css';
 
 import { motion } from 'framer-motion';
+import { DefaultSeo } from 'next-seo';
 import Link from 'next/link';
 import Head from 'next/head';
 import Router from 'next/router';
 import HeaderLogo from '../components/HeaderLogo';
+import SEO from '../next-seo.config';
 
 if (process.env.NODE_ENV === 'production') {
   Router.events.on('routeChangeComplete', (url) => gtag.pageview(url));
@@ -20,6 +22,9 @@ function MyApp({ Component, pageProps, router }) {
           href="/favicon.png"
         />
       </Head>
+
+      <DefaultSeo {...SEO} />
+
       <motion.div
         key={router.route}
         initial="pageInitial"

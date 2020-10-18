@@ -3,10 +3,13 @@ import format from 'date-fns/format';
 import Link from 'next/link';
 import Head from 'next/head';
 import parse, { domToReact } from 'html-react-parser';
+import { NextSeo } from 'next-seo';
 import Debugger from '../../components/Debugger';
 import PostCode from '../../components/post/PostCode';
 
-export default function BlogPost({ post }) {
+export default function BlogPost({
+  post, seo, title, featuredImage,
+}) {
   const getCode = (node) => {
     if (node.children.length > 0 && node.children[0].name === 'code') {
       return node.children[0].children;
@@ -24,6 +27,26 @@ export default function BlogPost({ post }) {
 
   return (
     <>
+      <NextSeo
+        title={seo?.title ? seo.title : title}
+        description={seo?.description ? seo.description : ''}
+        canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/journal/post/${post.slug}`}
+        openGraph={{
+          title: seo?.title ? seo.title : title,
+          description: seo?.description ? seo.description : '',
+          url: `${process.env.NEXT_PUBLIC_SITE_URL}/journal/post/${post.slug}`,
+          type: 'article',
+          article: {
+            publishedTime: post.date,
+            // tags: ['Tag A', 'Tag B', 'Tag C'],
+          },
+          images: [
+            {
+              url: featuredImage && !seo?.image ? featuredImage : seo.image,
+            },
+          ],
+        }}
+      />
       <div className="blog-post">
         <Head>
           <title>
@@ -67,13 +90,16 @@ export default function BlogPost({ post }) {
 export async function getStaticProps({ ...ctx }) {
   const { postname } = ctx.params;
 
-  const post = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp/v2/posts?slug=${postname}&_fields=date,excerpt,title,slug,content`)
+  const post = await axios.get(`${process.env.NEXT_PUBLIC_WP_API_URL}/wp/v2/posts?slug=${postname}&_fields=date,excerpt,title,slug,content,acf,_links,_embedded&_embed`)
     .then((result) => result.data[0]);
 
   return {
     props: {
       title: post.title.rendered,
       content: post.content.rendered,
+      seo: post.acf.seo ? post.acf.seo : null,
+      // eslint-disable-next-line no-underscore-dangle
+      featuredImage: post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url : '',
       post,
     },
   };
