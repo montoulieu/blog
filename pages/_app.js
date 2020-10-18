@@ -58,6 +58,20 @@ function MyApp({ Component, pageProps, router }) {
           </ul> */}
         </header>
         <Component {...pageProps} />
+
+        <footer className="py-3 text-sm">
+          Created by
+          {' '}
+          <a
+            href="https://linkent.montoulieu.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Pieter Montoulieu
+          </a>
+          {' '}
+          using Next.js, Tailwind and Netlify.
+        </footer>
       </motion.div>
     </main>
   );

@@ -1,11 +1,10 @@
 import axios from 'axios';
 import format from 'date-fns/format';
-import Link from 'next/link';
 import Head from 'next/head';
 import parse, { domToReact } from 'html-react-parser';
 import { NextSeo } from 'next-seo';
-import Debugger from '../../components/Debugger';
 import PostCode from '../../components/post/PostCode';
+// import Debugger from '../../components/Debugger';
 
 export default function BlogPost({
   post, seo, title, featuredImage,
