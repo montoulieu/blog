@@ -1,5 +1,4 @@
-import '../css/index.css'
-import "@wordpress/block-library/build-style/style.css"
+import '../css/index.css';
 
 import { motion } from 'framer-motion';
 import Link from 'next/link';
@@ -35,14 +34,14 @@ function MyApp({ Component, pageProps, router }) {
           },
         }}
       >
-      <header className="py-5 flex items-center mb-3">
-        <Link
-          href={`/`}
-        >
-          <a className="flex items-center">
-            <HeaderLogo />
-          </a>
-        </Link>
+        <header className="py-5 flex items-center mb-3">
+          <Link
+            href="/"
+          >
+            <a className="flex items-center">
+              <HeaderLogo />
+            </a>
+          </Link>
           {/* <ul className="ml-auto">
             <Link
               href={`/`}
@@ -56,7 +55,7 @@ function MyApp({ Component, pageProps, router }) {
         <Component {...pageProps} />
       </motion.div>
     </main>
-  )
+  );
 }
 
-export default MyApp
+export default MyApp;
