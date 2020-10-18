@@ -42,7 +42,8 @@ export default function BlogPost({
           },
           images: [
             {
-              url: featuredImage && !seo?.image ? featuredImage : seo.image,
+              // eslint-disable-next-line no-nested-ternary
+              url: (featuredImage && !seo?.image) ? featuredImage : (seo?.image ? seo.image.sizes.large : ''),
             },
           ],
         }}
