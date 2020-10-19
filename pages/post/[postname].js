@@ -1,6 +1,5 @@
 import axios from 'axios';
 import format from 'date-fns/format';
-import Head from 'next/head';
 import parse, { domToReact } from 'html-react-parser';
 import { NextSeo } from 'next-seo';
 import PostCode from '../../components/post/PostCode';
@@ -22,16 +21,23 @@ export default function BlogPost({
     </PostCode>
   );
 
+  const decodeTitle = (titleString) => {
+    const string = titleString
+      .replace('&#8211;', '-')
+      .replace('&#8217;', '\'');
+    return string;
+  };
+
   if (!post) return <></>;
 
   return (
     <>
       <NextSeo
-        title={seo?.title ? seo.title : title}
+        title={seo?.title ? decodeTitle(seo.title) : decodeTitle(title)}
         description={seo?.description ? seo.description : ''}
         canonical={`${process.env.NEXT_PUBLIC_SITE_URL}/post/${post.slug}`}
         openGraph={{
-          title: seo?.title ? seo.title : title,
+          title: seo?.title ? decodeTitle(seo.title) : decodeTitle(title),
           description: seo?.description ? seo.description : '',
           url: `${process.env.NEXT_PUBLIC_SITE_URL}/post/${post.slug}`,
           type: 'article',
@@ -48,18 +54,6 @@ export default function BlogPost({
         }}
       />
       <div className="blog-post">
-        <Head>
-          <title>
-            {post.title.rendered}
-            {' '}
-            | Montoulieu Blog
-          </title>
-          <meta
-            name="description"
-            content="Montoulieu Blog"
-          />
-        </Head>
-
         <article className="mb-20">
           <div className="text-white mx-auto mb-8">
             <header className="pb-4">

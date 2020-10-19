@@ -47,15 +47,6 @@ function MyApp({ Component, pageProps, router }) {
               <HeaderLogo />
             </a>
           </Link>
-          {/* <ul className="ml-auto">
-            <Link
-              href={`/`}
-            >
-              <a>
-                Home
-              </a>
-            </Link>
-          </ul> */}
         </header>
         <Component {...pageProps} />
 
@@ -67,6 +58,7 @@ function MyApp({ Component, pageProps, router }) {
               href="https://linkent.montoulieu.dev"
               target="_blank"
               rel="noopener noreferrer"
+              className="font-bold hover:underline"
             >
               Pieter Montoulieu
             </a>
@@ -74,7 +66,7 @@ function MyApp({ Component, pageProps, router }) {
             {' '}
             with Next.js, Tailwind and Netlify.
           </div>
-          <div>
+          <div className="font-black text-green-400 tracking-wider">
             2020
           </div>
         </footer>

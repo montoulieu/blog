@@ -37,6 +37,10 @@ a {
   }
 
   .blog-content {
+    img {
+      @apply rounded-md;
+    }
+
     p,
     pre {
       @apply mb-4;
