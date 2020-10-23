@@ -13,24 +13,32 @@ function PostList(props) {
           className="mb-20 flex flex-col"
           key={post.title.rendered}
         >
-          <header className="mb-2 relative flex lg:block items-center">
+          <header className="mb-2 relative">
             {post._embedded['wp:featuredmedia']
-            && (
-            <div className="inline-block lg:absolute top-0 transform lg:-translate-x-48 lg:translate-y-16 mr-6 lg:mr-0">
-              <img
-                src={post._embedded['wp:featuredmedia'][0].media_details.sizes.thumbnail.source_url}
-                className="rounded-full w-full"
-              />
-              {/* <button onClick={() => { console.log(post); }}>Log</button> */}
-              {/* <img src="" */}
-            </div>
-            )}
+              && (
+              <Link
+                href="/post/[postname]"
+                as={`/post/${post.slug}`}
+              >
+                <a>
+                  <div className="sm:float-left lg:float-none mx-auto lg:border border-gray-800 lg:shadow-md sm:rounded-full lg:absolute top-0 transform lg:-translate-x-48 lg:translate-y-16 mr-6 lg:mr-0 sm:w-40 h-40 overflow-hidden flex min-w items-center justify-center mb-4 sm:mb-0">
+                    <img
+                      src={post._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url}
+                      className="rounded-full shadow-md lg:shadow-none lg:rounded-none absolute h-full max-w-none text-center mx-auto"
+                    />
+                    {/* <button onClick={() => { console.log(post); }}>Log</button> */}
+                    {/* <img src="" */}
+                  </div>
+                </a>
+              </Link>
+              )}
             <Link
               href="/post/[postname]"
               as={`/post/${post.slug}`}
             >
+              {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
               <a
-                className="block text-3xl font-black text-green-500 leading-tight tracking-wider hover:text-green-600 transition-colors duration-200 mb-2"
+                className="block text-2xl sm:text-3xl font-black text-green-500 leading-tight tracking-wider hover:text-green-600 transition-colors duration-200 mb-2 break-words"
                 dangerouslySetInnerHTML={{ __html: post.title.rendered }}
               />
             </Link>

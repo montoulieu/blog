@@ -12,16 +12,22 @@ body {
 
 a {
   @apply text-green-400;
+
+  &:hover {
+    @apply underline;
+  }
 }
 
 .button-link {
-  @apply border border-green-400 p-3 rounded inline-block transition-colors duration-200 font-bold
-}
-.button-link:hover {
-  @apply bg-green-400
-}
-.button-link:hover a {
-  @apply text-gray-900
+  @apply border border-green-400 p-3 rounded inline-block transition-colors duration-200 font-bold no-underline;
+
+  &:hover {
+    @apply bg-green-400;
+
+    a {
+      @apply text-gray-900;
+    }
+  }
 }
 
 .blog-post {
@@ -38,7 +44,7 @@ a {
 
   .blog-content {
     img {
-      @apply rounded-md;
+      @apply rounded-md shadow-md border border-gray-700;
     }
 
     p,
@@ -66,7 +72,16 @@ a {
       @apply text-lg text-green-300 pb-2;
     }
     figcaption {
-      @apply text-sm text-center mb-8
+      @apply text-sm text-center mb-8;
+    }
+    .wp-block-quote {
+      @apply text-2xl font-thin border-l-4 border-green-600 pl-6 my-8;
+    }
+    p>code {
+      @apply bg-gray-700 p-1 rounded-md px-2;
+    }
+    pre {
+      @apply mb-6 !important;
     }
   }
 }

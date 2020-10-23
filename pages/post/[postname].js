@@ -8,6 +8,21 @@ import PostCode from '../../components/post/PostCode';
 export default function BlogPost({
   post, seo, title, featuredImage,
 }) {
+  const replaceCode = (node) => {
+    if (node.name === 'pre') {
+      return node.children.length > 0 && <PostCode language={getLanguage(node)}>{domToReact(getCode(node))}</PostCode>;
+    }
+  };
+
+  const getLanguage = (node) => {
+    if (node.attribs.class != null) {
+      const classes = node.attribs.class.split(' ');
+      const lang = classes[classes.length - 1];
+      return lang;
+    }
+    return null;
+  };
+
   const getCode = (node) => {
     if (node.children.length > 0 && node.children[0].name === 'code') {
       return node.children[0].children;
@@ -15,11 +30,18 @@ export default function BlogPost({
     return node.children;
   };
 
-  const replaceCode = (node) => node.name === 'pre' && node.children.length && (
-    <PostCode>
-      {domToReact(getCode(node))}
-    </PostCode>
-  );
+  // const getCode = (node) => {
+  //   if (node.children.length > 0 && node.children[0].name === 'code') {
+  //     return node.children[0].children;
+  //   }
+  //   return node.children;
+  // };
+
+  // const replaceCode = (node) => node.name === 'pre' && node.children.length && (
+  //   <PostCode>
+  //     {domToReact(getCode(node))}
+  //   </PostCode>
+  // );
 
   const decodeTitle = (titleString) => {
     const string = titleString
@@ -69,6 +91,7 @@ export default function BlogPost({
             >
               {parse(post.content.rendered, { replace: replaceCode })}
             </div>
+            {/* <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} /> */}
             {/* <Debugger data={post} /> */}
           </div>
         </article>
