@@ -18,6 +18,12 @@ a {
   }
 }
 
+header.main-nav {
+  a:hover {
+    @apply no-underline;
+  }
+}
+
 .button-link {
   @apply border border-green-400 p-3 rounded inline-block transition-colors duration-200 font-bold no-underline;
 

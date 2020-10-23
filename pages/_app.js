@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps, router }) {
           },
         }}
       >
-        <header className="py-5 flex items-center mb-3">
+        <header className="main-nav py-5 flex items-center mb-3">
           <Link
             href="/"
           >
