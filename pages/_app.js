@@ -64,10 +64,10 @@ function MyApp({ Component, pageProps, router }) {
             </a>
             <br />
             {' '}
-            with Next.js, Tailwind and Netlify.
+            using Next.js, Tailwind and Vercel.
           </div>
           <div className="font-black text-green-400 tracking-wider">
-            2020
+            Coding since 1999
           </div>
         </footer>
       </motion.div>
