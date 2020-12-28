@@ -1,8 +1,6 @@
+const colors = require('./node_modules/tailwindcss/colors');
+
 module.exports = {
-  future: {
-    removeDeprecatedGapUtilities: true,
-    purgeLayersByDefault: true,
-  },
   purge: {
     content: [
       './pages/**/*.{js,jsx,ts,tsx}',
@@ -18,6 +16,17 @@ module.exports = {
     },
     container: {
       center: true,
+    },
+    extend: {
+      colors: {
+        gray: colors.gray,
+        rose: colors.rose,
+        fuchsia: colors.fuchsia,
+        indigo: colors.indigo,
+        teal: colors.teal,
+        lime: colors.lime,
+        orange: colors.orange,
+      },
     },
   },
   variants: {},

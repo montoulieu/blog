@@ -10,6 +10,7 @@ body {
 @tailwind components;
 @tailwind utilities;
 
+
 a {
   @apply text-green-400;
 
@@ -24,15 +25,15 @@ header.main-nav {
   }
 }
 
+
 .button-link {
   @apply border border-green-400 p-3 rounded inline-block transition-colors duration-200 font-bold no-underline;
 
+  a {
+    @apply text-gray-900;
+  }
   &:hover {
     @apply bg-green-400;
-
-    a {
-      @apply text-gray-900;
-    }
   }
 }
 
@@ -48,46 +49,46 @@ header.main-nav {
     }
   }
 
-  .blog-content {
-    img {
-      @apply rounded-md shadow-md border border-gray-700;
-    }
-
-    p,
-    pre {
-      @apply mb-4;
-    }
-    ul {
-      @apply list-disc list-inside text-green-200;
-    }
-    h1,h2,h3 {
-      @apply font-bold text-green-400;
-    }
-    h1,h2 {
-      @apply pt-6 pb-4;
-    }
-
-    h1 {
-      @apply text-3xl;
-    }
-
-    h2 {
-      @apply text-2xl;
-    }
-    h3 {
-      @apply text-lg text-green-300 pb-2;
-    }
-    figcaption {
-      @apply text-sm text-center mb-8;
-    }
-    .wp-block-quote {
-      @apply text-2xl font-thin border-l-4 border-green-600 pl-6 my-8;
-    }
-    p>code {
-      @apply bg-gray-700 p-1 rounded-md px-2;
-    }
-    pre {
-      @apply mb-6 !important;
-    }
+  img {
+    @apply rounded-md shadow-md border border-gray-700;
   }
+
+  p,
+  pre {
+    @apply mb-4;
+  }
+  ul {
+    @apply list-disc list-inside text-green-200;
+  }
+  h1,h2,h3 {
+    @apply font-bold text-green-400;
+  }
+  h1,h2 {
+    @apply pt-6 pb-4;
+  }
+
+  h1 {
+    @apply text-3xl;
+  }
+
+  h2 {
+    @apply text-2xl;
+  }
+  h3 {
+    @apply text-lg text-green-300 pb-2;
+  }
+  figcaption {
+    @apply text-sm text-center mb-8;
+  }
+  .wp-block-quote {
+    @apply text-2xl font-thin border-l-4 border-green-600 pl-6 my-8;
+  }
+  p>code {
+    @apply bg-gray-700 p-1 rounded-md px-2;
+  }
+  pre {
+    @apply mb-6 !important;
+  }
+}
+  .blog-content {
 }
