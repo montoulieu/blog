@@ -70,7 +70,7 @@ export default function BlogPost({
           images: [
             {
               // eslint-disable-next-line no-nested-ternary
-              url: (featuredImage && !seo?.image) ? featuredImage : (seo?.image ? seo.image.sizes.large : ''),
+              url: (featuredImage && !seo?.image) ? featuredImage : (seo?.image ? seo.image.sizes.full : ''),
             },
           ],
         }}
@@ -116,7 +116,7 @@ export async function getStaticProps({ ...ctx }) {
       content: post.content.rendered,
       seo: post.acf.seo ? post.acf.seo : null,
       // eslint-disable-next-line no-underscore-dangle
-      featuredImage: post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url : '',
+      featuredImage: post._embedded['wp:featuredmedia'] ? post._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url : '',
       post,
     },
   };

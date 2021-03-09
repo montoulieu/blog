@@ -23,7 +23,7 @@ function PostList(props) {
                 <a>
                   <div className="sm:float-left lg:float-none mx-auto lg:border border-gray-800 lg:shadow-md sm:rounded-full lg:absolute top-0 transform lg:-translate-x-48 lg:translate-y-16 mr-6 lg:mr-0 sm:w-40 h-40 overflow-hidden flex min-w items-center justify-center mb-4 sm:mb-0">
                     <img
-                      src={post._embedded['wp:featuredmedia'][0].media_details.sizes.large.source_url}
+                      src={post._embedded['wp:featuredmedia'][0].media_details.sizes.full.source_url}
                       className="rounded-full shadow-md lg:shadow-none lg:rounded-none absolute h-full max-w-none text-center mx-auto"
                     />
                     {/* <button onClick={() => { console.log(post); }}>Log</button> */}
